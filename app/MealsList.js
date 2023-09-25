@@ -1,18 +1,20 @@
 'use client'
-import React from "react";
-
+import React, { useContext } from "react";
+import { MealContext } from "./MealsProvider";
 const MealsList = () => {
-
+    const {todaysMeals, tickMeal} = useContext(MealContext)
     return (
         <div>
             <h2>Meals:</h2>
             <ul>
-                <li>
+
+                {todaysMeals.map((item)=>(
+                <li key={item.id} onClick={tickMeal}>
                     <input 
                         type="checkbox"
                     />
-                    mealName
-                </li>
+                    {item.name}
+                </li>))}
             </ul>
         </div>
     )
